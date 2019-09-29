@@ -6,36 +6,27 @@ import React, { Component } from 'react';
 import SavePokemonAction from '../store/reducers/actions/savePokemons_actions';
 
 class Pokedex extends Component {
-
     constructor(props){
         super(props);
         this.getPokemonsInfos(this.props.nbPokemons);
     }
-
     getPokemonsInfos = (nbToPrint) => {
         if (nbToPrint === 0)
             return null
         axios.get("https://pokeapi.co/api/v2/pokemon/" + nbToPrint)
                     .then(response => {
                         this.props.savePokemons(response.data);
-                        /*this.setState(prevState => {
-                            return {
-                                pokemons: [...prevState.pokemons, response.data]
-                            }
-                        })*/
                         this.getPokemonsInfos(nbToPrint - 1)
                     })
-                    
     }
-   /* componentDidMount() {
-        this.getPokemonsInfos(this.props.nbPokemons);
-    }*/
     render(){
         if (this.props.pokemons.length !== this.props.nbPokemons)
             return (
                 <div className="row center-align">
                     <h2>Chargement ... 
-                        <span className="btn-floating btn-large pulse"><i className="large material-icons">sync</i></span>
+                        <span className="btn-floating btn-large pulse">
+                            <i className="large material-icons">sync</i>
+                        </span>
                     </h2>
 
                 </div>
@@ -58,14 +49,12 @@ class Pokedex extends Component {
         )
     }
 }
-
 const mapStateToProps = (state) => {
     return {
         pokemons: state.pokemons,
 
     }
 }
-
 const mapDispatchToProps = (dispatch) => {
     return {
         savePokemons: (pokemonsList) => {

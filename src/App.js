@@ -17,7 +17,7 @@ function App() {
       <Switch>
         <Route 
               exact path="/" 
-              render={(props) => <Pokedex {...props} nbPokemons={150}/>
+              render={(props) => <Pokedex {...props} nbPokemons={54}/>
         }/>
         <Route 
               path="/search/:name" 

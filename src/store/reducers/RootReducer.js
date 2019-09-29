@@ -11,7 +11,6 @@ const rootReducer = (state = initialState, action) => {
                 pokemons:[...state.pokemons, action.payload]
             }
         case 'SEARCH_POKEMON':
-            console.log("SERACHING........!!!!")
             return {
                 ...state,
                 searchedPokemon: action.payload

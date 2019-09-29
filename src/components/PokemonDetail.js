@@ -1,6 +1,6 @@
 import React from 'react'
-import searchPokemonAction from '../store/reducers/actions/searchPokemonAction';
 import { connect } from 'react-redux'
+import searchPokemonAction from '../store/reducers/actions/searchPokemonAction';
 
 const PokemonDetail = (props) => {
     const name = props.match.params.pokemonName;
@@ -8,30 +8,54 @@ const PokemonDetail = (props) => {
         return pokemon.name === name;
     })
     props.searchPokemon(toFind);
-
-    console.log('a afficher ==> ', props.pokemon)
-    props.searchPokemon(toFind)
     if (props.pokemon)
     {
         return (
-            <div className="pokemonSearch">
-                <h2>carte d'identité de {props.pokemon.name} 
-                    <span className="btn-floating btn-large pulse"><i className="small material-icons">fingerprint</i></span>
-                </h2>
+            <div className="container pokemonSearch col m6">
+               <div className="card z-depth-2">
+                    <div className="card-image small waves-effect waves-block waves-light">
+                        <span className="badge">{props.pokemon.id}</span>
+                        <img className="resposnvide-img " src={props.pokemon.sprites.front_default} alt={props.pokemon.name}/>
+                    </div>
+                </div>
+                <div className="pokemonInfos card z-depth-5 col">
+                    <h4> {props.pokemon.name}
+                        <span className="btn-floating btn-small pulse">
+                            <i className="small material-icons">fingerprint</i>
+                        </span>
+                    </h4>
+                    <div className="row">
+                        <div className="col">
+                            <span className="description">Name:</span> {props.pokemon.name}
+                        </div>
+                        <div className="col">
+                            <span className="description">type:</span> {props.pokemon.types[0].type.name}
+                        </div>
+                        <div className="col">
+                            <span className="description">weight:</span> {props.pokemon.weight}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <span className="description">Ability 1:</span> {props.pokemon.abilities[0].ability.name}
+                        </div>
+                        <div className="col">
+                            <span className="description">Ability 2:</span> {props.pokemon.abilities[1].ability.name}
+                        </div>
+                    </div>
+                </div>
             </div>
-         )
+        )
     }
     else {
         return (
             <div className="pokemonSearch">
-                <h2>
+                <h4>
                     Something went wrong (with Redux)!
-                </h2>
+                </h4>
             </div>)
         }
-    
 }
-
 const mapDispatchToProps = (dispatch) => {
     return {
         searchPokemon: (toFind) => {
@@ -39,7 +63,6 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
 const mapStateToProps = (state) => {
     console.log(state)
     return {
