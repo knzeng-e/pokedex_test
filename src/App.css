@@ -13,6 +13,7 @@
   margin: 4.2px;
   border-radius: 8px;
   overflow: hidden;
+  width: 19%;
 }
 .hoverable:hover{
   background-color: rgb(234, 236, 72);
@@ -33,5 +34,10 @@
 }
 .btn-floating {
   margin-left: 21px;
+}
+
+.notFound {
+  min-height: 100%;
+  text-align: center;
 }
 
