@@ -1,0 +1,37 @@
+.Pokedex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: rgb(16, 15, 49);
+}
+.navBar{
+  background-color: rgb(16, 15, 49);
+  text-align: center
+}
+.pokemonCard {
+  margin: 4.2px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.hoverable:hover{
+  background-color: rgb(234, 236, 72);
+}
+.pokemon .card{
+  border-radius: 8%;
+}
+.searchBar {
+  margin-top: 42px;
+  margin-left: 35%;
+  margin-right: 25%;
+}
+.searchButton{
+  background-color: rgb(16, 15, 49);  
+}
+.pokemonSearch {
+  text-align: center;
+}
+.btn-floating {
+  margin-left: 21px;
+}
+
